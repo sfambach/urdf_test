@@ -1,0 +1,15 @@
+<launch>
+  <arg name="model" default="$(find urdf_test)/test01.urdf"/>
+  <arg name="gui" default="true" />
+  <arg name="rvizconfig" default="$(find urdf_test)/urdf.rviz" />
+
+  <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+  <node if="$(arg gui)" name="joint_state_publisher" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
+  <node unless="$(arg gui)" name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+
+  <rosparam command="load" file="$(find urdf_test)/joints.yaml" ns="gaz_joint_state_controller" />
+  <node name="gaz_controller_spawner" pkg="controller_manager" type="spawner" 
+        args="gaz_joint_state_controller --shutdown-timeout 3"/>
+</launch>
