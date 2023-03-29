@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<robot name="myfirst">
+  <link name="base_link">
+
+    <visual>
+      <origin xyz="2 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="1" radius="1"/>
+      </geometry>
+    </visual>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+	<box size="1 1 1" />
+      </geometry>
+    </visual>
+
+    <visual>
+      <origin xyz="0 2 0" rpy="1.5708 0 0"/>
+      <geometry>
+	<box size="2 1 1" />
+      </geometry>
+    </visual>
+
+    <visual>
+      <origin xyz="-2 0 0" rpy="0 0 1.5708"/>
+      <geometry>
+	<box size="2 1 1" />
+      </geometry>
+    </visual>
+
+    <visual>
+      <origin xyz="-2 2 0" rpy="0 1.5708 0"/>
+      <geometry>
+	<box size="2 1 1" />
+      </geometry>
+    </visual>
+
+
+    <visual>
+      <origin xyz="0 0 2" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="1"/>
+      </geometry>
+    </visual>
+
+  </link>
+</robot>
